@@ -10,60 +10,78 @@
 
 // ====================================================================================
 
-// // input numeri generati random da pc e controllati che non siano uguali
-// var arrayRandom = [];
-// for (var i = 0; i < 22; i++) {
-//   var numeriRandom = Math.floor(Math.random() * 100) + 1;
-//   console.log('log di numeri random: ' + numeriRandom);
-//   var uguale = arrayRandom.includes(numeriRandom);
-//   if (uguale == true) {
-//     alert('numero doppio trovato');
-//   } else if (uguale == false && arrayRandom.length < 16) {
-//     arrayRandom.push(numeriRandom);
-//   }
-// }
-// console.log(arrayRandom);
-//
-// // =======================================================================================
-//
-// // input numeri utente 16 volte controllando che non siano ripetuti
-// var arrayUtente = [];
-// for (var i = 0; i < 16; i++) {
-//   var numeriUtente = parseInt(prompt('Inserisci 16 numeri da 1 a 100'));
-//   console.log('log di numeri utente: ' + numeriUtente);
-//   var ugualeU = arrayUtente.includes(numeriUtente);
-//   if (ugualeU == true) {
-//     alert('Non puoi inserire numeri uguali');
-//   } else if (ugualeU == false && arrayUtente.length < 16) {
-//     arrayUtente.push(numeriUtente);
-//     // confronto tra Array
-//     for (var z = 0; z < arrayRandom.length; z++) {
-//       var ugualex = arrayRandom.includes(arrayUtente[z]);
-//     }
-//     console.log('Mi dispiace hai perso, hai trovato una mina' + ugualex);
-//   }
-// }
-// console.log(arrayUtente);
+// input numeri generati random da pc e controllati che non siano uguali
+var arrayRandom = [];
+for (var i = 0; i < 22; i++) {
+  var numeriRandom = Math.floor(Math.random() * 100) + 1;
+  console.log('log di numeri random: ' + numeriRandom);
 
-
-var utenteArray = [];
-for (var i = 0; i < 16; i++) {
-  var numeriUtente = parseInt(prompt('Inserisci 16 numeri da 1 a 100'));
-  var x = true;
-  for (var j = 0; j < i; j++) {
-    if (utenteArray[j] == numeriUtente) {
-    x = false;
-    }
-  }
-  if (x == true) {
-    utenteArray[i] = numeriUtente;
-  } else {
-    console.log('numero uguale trovato');
-    i--;
+  var uguale = arrayRandom.includes(numeriRandom);
+  if (uguale == true) {
+    console.log('numero doppio trovato e rimpiazzato');
+  } else if (uguale == false && arrayRandom.length < 16) {
+    arrayRandom.push(numeriRandom);
   }
 }
-console.log('log di arrayUtente ' + utenteArray);
-console.log('log di ultimo numeriUtente ' + numeriUtente);
+console.log(arrayRandom);
+
+// // =======================================================================================
+var punteggio = 0;
+// input numeri generati da utente e controllati che non siano uguali
+var arrayUtente = [];
+for (var i = 0; i < 16; i++) {
+  var numeroUtente = parseInt(prompt('Inserisci 16 numeri da 1 a 100'));
+  // console.log('numero inserito ma non ancora pushato: ' + numeroUtente);
+
+  var controllo = arrayUtente.includes(numeroUtente);
+  // console.log('se hai trovato un numero uguale allora true : ' + controllo);
+
+  if (controllo == true) {
+    alert('Numero inserito uguale ai precedenti o non inserito correttamente');
+  } else {
+    arrayUtente.push(numeroUtente);
+    var plus = punteggio++;
+    for (var j = 0; j < 16; j++) {
+      confrontoArray = arrayRandom.includes(numeroUtente);
+      if (confrontoArray == true) {
+        alert('Hai preso una mina ed hai perso, ricarica la pagina. ' + '- Il tuo Punteggio: ' + plus + ' su 16')
+      }
+    }
+    // console.log('numero non uguale ad altri e quindi pushato nella array ' + numeroUtente);
+  }
+}
+// console.log('composizione finale array: ' + arrayUtente);
+
+// =========================================================================================
+
+// for (var i = 0; i < 16; i++) {
+//   confrontoArray = arrayUtente.includes(arrayRandom)
+//   if (confrontoArray == true) {
+//     alert('Mi dispiace hai preso una mina ed hai perso')
+//   }
+// }
+
+// ===========================================================================================
+
+// sistema preso da google
+// var utenteArray = [];
+// for (var i = 0; i < 16; i++) {
+//   var numeriUtente = parseInt(prompt('Inserisci 16 numeri da 1 a 100'));
+//   var x = true;
+//   for (var j = 0; j < i; j++) {
+//     if (utenteArray[j] == numeriUtente) {
+//     x = false;
+//     }
+//   }
+//   if (x == true) {
+//     utenteArray[i] = numeriUtente;
+//   } else {
+//     console.log('numero uguale trovato');
+//     i--;
+//   }
+// }
+// console.log('log di arrayUtente ' + utenteArray);
+// console.log('log di ultimo numeriUtente ' + numeriUtente);
 
 
 
