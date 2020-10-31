@@ -8,8 +8,6 @@
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
 
 
-// ====================================================================================
-
 // input numeri generati random da pc e controllati che non siano uguali tramite for
 // var arrayRandom = [];
 // for (var i = 0; i < 22; i++) {
@@ -43,74 +41,30 @@ while (arrayRandom.length < 16) {
 }
 console.log('Lista dei numeri casuali: ' + arrayRandom + ' Totale: ' + arrayRandom.length);
 
-// // =======================================================================================
-// var punteggio = 0;
-// // input numeri generati da utente e controllati che non siano uguali
-// var arrayUtente = [];
-// for (var i = 0; i < 16; i++) {
-//   var numeroUtente = parseInt(prompt('Inserisci 16 numeri da 1 a 100'));
-//   // console.log('numero inserito ma non ancora pushato: ' + numeroUtente);
-//
-//   var controllo = arrayUtente.includes(numeroUtente);
-//   // console.log('se hai trovato un numero uguale allora true : ' + controllo);
-//
-//   if (controllo == true) {
-//     alert('Numero inserito uguale ai precedenti o non inserito correttamente');
-//   } else {
-//     arrayUtente.push(numeroUtente);
-//     var plus = punteggio++;
-//     for (var j = 0; j < 16; j++) {
-//       confrontoArray = arrayRandom.includes(numeroUtente);
-//       if (confrontoArray == true) {
-//         alert('Hai preso una mina ed hai perso, ricarica la pagina. ' + '- Il tuo Punteggio: ' + plus + ' su 16')
-//       }
-//     }
-//     // console.log('numero non uguale ad altri e quindi pushato nella array ' + numeroUtente);
-//   }
-// }
-// console.log('composizione finale array: ' + arrayUtente);
 
-// =========================================================================================
+// input numeri utente controllati che non siano uguali tramite ciclo while
+var arrayUtente = [];
+var bomba = false;
+var punteggio = 0;
 
-// for (var i = 0; i < 16; i++) {
-//   confrontoArray = arrayUtente.includes(arrayRandom)
-//   if (confrontoArray == true) {
-//     alert('Mi dispiace hai preso una mina ed hai perso')
-//   }
-// }
-
-// ===========================================================================================
-
-// sistema preso da google
-// var utenteArray = [];
-// for (var i = 0; i < 16; i++) {
-//   var numeriUtente = parseInt(prompt('Inserisci 16 numeri da 1 a 100'));
-//   var x = true;
-//   for (var j = 0; j < i; j++) {
-//     if (utenteArray[j] == numeriUtente) {
-//     x = false;
-//     }
-//   }
-//   if (x == true) {
-//     utenteArray[i] = numeriUtente;
-//   } else {
-//     console.log('numero uguale trovato');
-//     i--;
-//   }
-// }
-// console.log('log di arrayUtente ' + utenteArray);
-// console.log('log di ultimo numeriUtente ' + numeriUtente);
-
-
-
-
-
-
-
-
-
-
-
+while (arrayUtente.length < 84 && bomba == false) {
+  var numeroUtente = parseInt(prompt('Inserisci i tuo numeri fortunati da 1 a 100.'));
+  if (arrayUtente.includes(numeroUtente) || isNaN(numeroUtente)) {
+    console.log("Numero gia' inserito o non valido, riprova...");
+  } else if (numeroUtente > 100) {
+    console.log('Ricorda che non puoi inserire numeri superiori a 100.');
+  } else {
+    if (arrayRandom.includes(numeroUtente)) {
+      console.log('Mi dispiace hai perso, prendendo una mina al seguente numero: ' + numeroUtente);
+      bomba = true;
+    } else {
+      arrayUtente.push(numeroUtente);
+      ++punteggio;
+    }
+  }
+}
+console.log('Punteggio finale: ' + punteggio);
+console.log(arrayUtente);
 
 
 // BONUS: (da fare solo se funziona tutto il resto)
