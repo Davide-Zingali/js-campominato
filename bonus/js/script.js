@@ -18,18 +18,22 @@ var arrayUtente = [];
 var bomba = false;
 var punteggio = 0;
 
-if (inputDifficolta == 'facile') {
-  var facile = difficolta(100);
-  console.log('Lista dei numeri casuali: ' + arrayRandom + ' Totale: ' + arrayRandom.length);
-  facile = input(84, 100);
-} else if (inputDifficolta == 'medio') {
-  var medio = difficolta(80);
-  console.log('Lista dei numeri casuali: ' + arrayRandom + ' Totale: ' + arrayRandom.length);
-  medio = input(64, 80);
-} else if (inputDifficolta == 'difficile') {
-  var difficile = difficolta(50);
-  console.log('Lista dei numeri casuali: ' + arrayRandom + ' Totale: ' + arrayRandom.length);
-  difficile = input(34, 50);
+switch (inputDifficolta) {
+  case 'difficile':
+    var difficile = difficolta(50);
+    console.log('Lista dei numeri casuali: ' + arrayRandom + ' Totale: ' + arrayRandom.length);
+    difficile = input(34, 50);
+    break;
+  case 'medio':
+    var medio = difficolta(80);
+    console.log('Lista dei numeri casuali: ' + arrayRandom + ' Totale: ' + arrayRandom.length);
+    medio = input(64, 80);
+    break;
+  default:
+    var facile = difficolta(100);
+    console.log('Lista dei numeri casuali: ' + arrayRandom + ' Totale: ' + arrayRandom.length);
+    facile = input(84, 100);
+    break;
 }
 
 console.log('Punteggio finale: ' + punteggio);
